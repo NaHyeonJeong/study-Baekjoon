@@ -108,7 +108,26 @@ public class InOutCal {
         }
     }
 
-    public void num2588(){
+    public void num2588() throws IOException {
+        BufferedReader bf1 = new BufferedReader(new InputStreamReader(System.in));
 
+        int num1 = Integer.parseInt(bf1.readLine());
+        int num2 = Integer.parseInt(bf1.readLine());
+        int mul = num1 * num2;
+        int[] arr = new int[3];
+        int[] arr2 = new int[3];
+
+        int i = 0;
+        while(num2 > 0){
+            arr[i] = num2 % 10;
+            arr2[i] = num1 * arr[i];
+            num2 = num2 / 10;
+            i++;
+        }
+
+        for(int j = 0; j < arr2.length; j++){
+            System.out.println(arr2[j]);
+        }
+        System.out.println(mul);
     }
 }

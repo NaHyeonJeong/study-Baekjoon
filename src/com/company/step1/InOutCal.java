@@ -82,7 +82,33 @@ public class InOutCal {
         System.out.println(sum);
     }
 
-    public void num10430(){
+    public void num10430() throws IOException {
+        //첫째 줄에 (A+B)%C
+        //둘째 줄에 ((A%C) + (B%C))%C
+        //셋째 줄에 (A×B)%C
+        //넷째 줄에 ((A%C) × (B%C))%C를 출력
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = null;
+        int[] array = new int[3];
+        int[] result = {0, 0, 0, 0};
+        //double first = 0.0, second = 0.0, third = 0.0, fourth = 0.0;
+
+        st = new StringTokenizer(bf.readLine(), " ");
+        for(int i = 0; i < array.length; i++){
+            array[i] = Integer.parseInt(st.nextToken());
+        }
+
+        result[0] = (array[0] + array[1]) % array[2];
+        result[1] = ((array[0] % array[2]) + (array[1] % array[2])) % array[2];
+        result[2] = (array[0] * array[1]) % array[2];
+        result[3] = ((array[0] % array[2]) * (array[1] % array[2])) % array[2];
+
+        for(int rs : result){
+            System.out.println(rs);
+        }
+    }
+
+    public void num2588(){
 
     }
 }

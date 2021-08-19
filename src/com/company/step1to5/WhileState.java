@@ -1,4 +1,4 @@
-package com.company.step4;
+package com.company.step1to5;
 
 /**
  * 4단계

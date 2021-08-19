@@ -1,4 +1,4 @@
-package com.company.step1;
+package com.company.step1to5;
 
 import java.io.BufferedReader;
 import java.io.IOException;

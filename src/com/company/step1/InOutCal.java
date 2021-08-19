@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 /**
  * 1단계
  * 입출력과 사칙연산
- * 시작일 : 2021년08월15일
+ * 시작일 : 2021년 08월 15일
  */
 public class InOutCal {
 

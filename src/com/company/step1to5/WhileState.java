@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 /**
  * 4단계
  * while 문
- * 시작일 :
+ * 시작일 : 2021년 08월 23일
  */
 public class WhileState {
 

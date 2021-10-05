@@ -89,4 +89,42 @@ public class StringEx {
         bw.flush();
         bw.close();
     }
+
+    /**
+     * 단어에서 가장 많이 사용된 알파벳 알아내기
+     * 가장 많이 사용된 알파벳은 대문자로 출력, 여러개 존재하는 경우에는 ?를 출력
+     * 단, 대소문자 구별 안함
+     */
+    public void num1157() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int[] arr = new int[26];
+        int max = -1;
+        char ch = '?';
+
+        //알파벳 개수 카운트해서 int 배열에 넣기
+        //대문자건 소문자건 count를 증가시켜야함
+        String str = br.readLine();
+        for(int i = 0; i < str.length(); i++){
+            if(65 <= str.charAt(i) && str.charAt(i) <= 90){ //대문자라면
+                arr[str.charAt(i) - 65]++;
+            } else{ //소문자라면
+                arr[str.charAt(i) - 97]++;
+            }
+        }
+
+        //가장 큰 값을 가진 알파벳 찾기(최대값 찾기)
+        for (int i = 0; i < arr.length; i++){
+            if(arr[i] > max){
+                max = arr[i];
+                ch = (char) (i + 65); //대문자로 출력해야 함
+            } else if(arr[i] == max){
+                ch = '?'; //가장 큰 값을 가진 알파벳이 여러개라면
+            }
+        }
+
+        bw.write(ch);
+        bw.flush();
+        bw.close();
+    }
 }

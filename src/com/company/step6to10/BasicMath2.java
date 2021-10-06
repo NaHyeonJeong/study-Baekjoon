@@ -1,6 +1,7 @@
 package com.company.step6to10;
 
 import java.io.*;
+import java.math.BigInteger;
 
 public class BasicMath2 {
     /**
@@ -36,5 +37,35 @@ public class BasicMath2 {
         bw.close();
     }
 
+    public void num3053() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        double r = Double.parseDouble(br.readLine());
+        double u = r * r * Math.PI; //유클리드
+        double t = 2 * r * r; //택시
+
+        bw.write(u + "\n" + t);
+        bw.flush();
+        bw.close();
+    }
+
+    public void num1193(){
+
+    }
+
+    public void num10757() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = br.readLine();
+        String[] s = str.split(" ");
+
+        BigInteger bigInteger1 = new BigInteger(s[0]);
+        BigInteger bigInteger2 = new BigInteger(s[1]);
+
+        bw.write(bigInteger1.add(bigInteger2)+"");
+        bw.flush();
+        bw.close();
+    }
 
 }

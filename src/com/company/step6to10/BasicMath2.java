@@ -69,6 +69,11 @@ public class BasicMath2 {
         bw.close();
     }
 
+    /**
+     * 소수 찾기 - 입력 받은 수 중 소수의 개수 출력
+     * sqrt(N) 이하의 자연수들로 모두 나눠본다.
+     * @throws IOException
+     */
     public void num1978() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -104,6 +109,10 @@ public class BasicMath2 {
         bw.close();
     }
 
+    /**
+     * 소수
+     * @throws IOException
+     */
     public void num2581() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -142,4 +151,97 @@ public class BasicMath2 {
             System.out.println(min);
         }
     }
+
+    public void num1085() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
+        int w = Integer.parseInt(st.nextToken());
+        int h = Integer.parseInt(st.nextToken());
+
+        int xMin = Math.min(x, w-x);
+        int yMin = Math.min(y, h-y);
+
+        System.out.println(Math.min(xMin, yMin));
+    }
+
+    /**
+     * 소수 구하기
+     * "에라토스테네스의 체"를 사용해서 소수 구하기
+     * k=2부터 sqrt(N) 이하까지 반복하여 자연수들 중 k를 제외한 k의 배수들을 제외시킨다.
+     */
+    public void num1929() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int M = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
+
+        boolean[] prime = new boolean[N + 1];
+
+        //소수 구하기
+        //0과 1은 소수가 아님
+        for(int i = 2; i <= N; i++){
+            if(prime[i]){ //소수가 아니라고 체크된 경우 그냥 패스
+                continue;
+            }
+            if(i >= M){
+                sb.append(i).append('\n');
+            }
+            for(int j = i+i; j <= N; j += i){ //소수가 아닌 경우 체크
+                prime[j] = true;
+            }
+        }
+        System.out.println(sb);
+    }
+
+    /**
+     * 베르트랑 공준
+     * 1 <= n <= 123456
+     * 2n = 246912
+     * 0~246912 -> 246913
+     */
+    public static boolean[] prime = new boolean[246913];
+    public void num4948() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        getPrime();
+
+        while(true){
+            int n = Integer.parseInt(br.readLine());
+            if(n == 0) break;
+
+            int count = 0;
+
+            for(int i = n+1; i <= 2*n; i++){ //n부터 2n까지 돌면서 소수 찾기
+                //false면 소수, true면 소수 아님
+                if(!prime[i]) count++;
+            }
+            sb.append(count).append('\n');
+        }
+        System.out.print(sb);
+    }
+    //소수 구하는 메소드
+    //소수O = false, 소수X = true
+    public static void getPrime(){
+        //0과 1은 소수가 아님
+        prime[0] = prime[1] = true;
+
+        for(int i = 2; i < Math.sqrt(prime.length); i++){
+            //소수가 아닌 경우에는 그냥 패스
+            if(prime[i])
+                continue;
+            //소수가 아닌 경우 찾기
+            //k=2부터 sqrt(N) 이하까지 반복하여 자연수들 중 k를 제외한 k의 배수들을 제외시킨다.
+            for(int j = i*i; j < prime.length; j+=i){
+                prime[j] = true;
+            }
+        }
+    }
+
+
 }
